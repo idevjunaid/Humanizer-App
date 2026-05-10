@@ -1,0 +1,18 @@
+{
+  "build": {
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "HUGGING_FACE_API_KEY": "@HUGGING_FACE_API_KEY"
+      }
+    },
+    "release": {
+      "android": {
+        "buildType": "app-bundle"
+      }
+    }
+  }
+}

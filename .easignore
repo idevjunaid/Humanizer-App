@@ -1,0 +1,17 @@
+# Ignore local env files and other unneeded files for EAS
+.env
+.env.local
+node_modules
+dist
+build
+.expo
+*.keystore
+.gradle
+android/.gradle
+android/.idea
+android/local.properties
+**/__tests__
+coverage
+yarn.lock
+package-lock.json
+.DS_Store

@@ -48,3 +48,31 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+## Building an Android APK with EAS (internal testing)
+
+1. Install EAS CLI and login:
+
+```bash
+npm install -g eas-cli
+eas login
+```
+
+2. Add your Hugging Face key as an EAS secret (do not commit this key):
+
+```bash
+eas secret:create --name HUGGING_FACE_API_KEY --value <your_key_here>
+```
+
+3. Start a preview build (produces an APK). The project already contains `eas.json` with a `preview` profile:
+
+```bash
+eas build -p android --profile preview
+```
+
+4. When the build completes, EAS will print an artifact URL. Copy and send that URL to your tester. They can open it on their Android device to download and install the APK.
+
+Notes:
+- We added `.easignore` to exclude `.env` and other local files from the build context.
+- The app reads `HUGGING_FACE_API_KEY` from environment; do not hardcode secrets in source files.
+- If you want me to start the build from this machine, confirm and I will install `eas-cli`, ask you to authenticate, then kick off the build and return the artifact URL.
