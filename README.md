@@ -6,7 +6,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 1. Install dependencies
 
-   ```bash
+   ````bash
    # Humanizer (Expo)
 
    A small mobile app (Expo + React Native + Tamagui) that provides AI-powered text humanizing and summarization tools.
@@ -24,7 +24,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
    ```bash
    npm install
-   ```
+   ````
 
    2. Start development server
 
@@ -37,7 +37,6 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    ## Build an Android APK (for testing)
 
    This repo includes an `eas.json` preview profile that produces an installable APK for internal testing.
-
    1. Install EAS CLI and login:
 
    ```bash
@@ -64,17 +63,14 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    - The app reads `HUGGING_FACE_API_KEY` from environment variables; if not provided the app falls back to mock behavior.
 
    ## Environment
-
    - Use `.env.example` as a template for local environment variables. Do NOT commit secrets.
 
    ## Contributing
-
    1. Create a branch: `git checkout -b feat/your-change`
    2. Make changes and add tests where appropriate.
    3. Open a PR with a short description.
 
    ## Troubleshooting
-
    - If you see Tamagui export warnings during bundling, try installing matching Tamagui packages or pinning versions. These are often warnings only.
    - If the Expo dev server prompts for another port, allow it or run with `--port <n>`.
 
