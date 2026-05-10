@@ -7,72 +7,77 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 1. Install dependencies
 
    ```bash
+   # Humanizer (Expo)
+
+   A small mobile app (Expo + React Native + Tamagui) that provides AI-powered text humanizing and summarization tools.
+
+   ## Highlights
+
+   - Modern UI with Tamagui
+   - Hugging Face inference integration (optional)
+   - File-based routing (Expo Router)
+   - Configured for EAS builds (internal APK preview)
+
+   ## Quick start
+
+   1. Install dependencies
+
+   ```bash
    npm install
    ```
 
-2. Start the app
+   2. Start development server
 
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+   Open on a device/emulator via the Expo CLI QR code or using Expo Go.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ## Build an Android APK (for testing)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+   This repo includes an `eas.json` preview profile that produces an installable APK for internal testing.
 
-## Get a fresh project
+   1. Install EAS CLI and login:
 
-When you're ready, run:
+   ```bash
+   npm install -g eas-cli
+   eas login
+   ```
 
-```bash
-npm run reset-project
-```
+   2. (Optional) Add secrets to EAS so builds can access API keys without embedding them in source code:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+   ```bash
+   eas secret:create --name HUGGING_FACE_API_KEY --value <your_key_here>
+   ```
 
-## Learn more
+   3. Start a preview build (APK):
 
-To learn more about developing your project with Expo, look at the following resources:
+   ```bash
+   eas build -p android --profile preview
+   ```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+   4. After the build completes, EAS will provide an artifact URL. Share that URL with testers — they can open it on an Android device to download and install the APK.
 
-## Join the community
+   Notes:
+   - `.easignore` is included to exclude local `.env` files and node_modules from the build context.
+   - The app reads `HUGGING_FACE_API_KEY` from environment variables; if not provided the app falls back to mock behavior.
 
-Join our community of developers creating universal apps.
+   ## Environment
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+   - Use `.env.example` as a template for local environment variables. Do NOT commit secrets.
 
-## Building an Android APK with EAS (internal testing)
+   ## Contributing
 
-1. Install EAS CLI and login:
+   1. Create a branch: `git checkout -b feat/your-change`
+   2. Make changes and add tests where appropriate.
+   3. Open a PR with a short description.
 
-```bash
-npm install -g eas-cli
-eas login
-```
+   ## Troubleshooting
 
-2. Add your Hugging Face key as an EAS secret (do not commit this key):
+   - If you see Tamagui export warnings during bundling, try installing matching Tamagui packages or pinning versions. These are often warnings only.
+   - If the Expo dev server prompts for another port, allow it or run with `--port <n>`.
 
-```bash
-eas secret:create --name HUGGING_FACE_API_KEY --value <your_key_here>
-```
+   ## License
 
-3. Start a preview build (produces an APK). The project already contains `eas.json` with a `preview` profile:
-
-```bash
-eas build -p android --profile preview
-```
-
-4. When the build completes, EAS will print an artifact URL. Copy and send that URL to your tester. They can open it on their Android device to download and install the APK.
-
-Notes:
-- We added `.easignore` to exclude `.env` and other local files from the build context.
-- The app reads `HUGGING_FACE_API_KEY` from environment; do not hardcode secrets in source files.
-- If you want me to start the build from this machine, confirm and I will install `eas-cli`, ask you to authenticate, then kick off the build and return the artifact URL.
+   MIT
